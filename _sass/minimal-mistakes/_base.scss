@@ -126,7 +126,7 @@ blockquote {
 /* links */
 
 a {
-  text-decoration: none;
+  text-decoration: none; //링크 언더라인 없애기
   &:focus {
     @extend %tab-focus;
   }
