@@ -1,0 +1,28 @@
+/* ==========================================================================
+   Custom skin
+   ========================================================================== */
+
+
+/* Colors */
+$background-color: #e6fff2 !default; /*말 그대로 블로그 메인 기본*/
+$text-color: #20202c !default;
+$muted-text-color: #001a0c !default;
+$primary-color: #00b3b3 !default; /*구분자 색*/
+$border-color: mix(#fff, #393e46, 75%) !default; /*포스팅 index 색*/
+$footer-background-color: $primary-color !default; /*하단 footer 부분 배경색*/
+$link-color: #001a0c !default; /*모든 링크들의 색*/
+$masthead-link-color: $text-color !default;
+$masthead-link-color-hover: $text-color !default;
+$navicon-link-color-hover: mix(#fff, $text-color, 80%) !default;
+
+.page__footer {
+  color: #003333 !important; /*하단 footer 부분 글자색*/
+}
+
+.page__footer-follow .social-icons .svg-inline--fa {
+  color: inherit;
+}
+
+a{
+  font-weight: bold;
+}
