@@ -86,5 +86,5 @@ github에 올라와있는 [tzinfo 레포](https://github.com/tzinfo/tzinfo ) 를
 
 ```C:\Users\유저이름\Documents\tzinfo-data\lib\tzinfo```
 
-을 열어서 비교하며 내 로컬 ruby 환경에 없는 파일들을 싹 다 복사해줬다.   
+을 열어서 비교하며 내 로컬 ruby 환경에 없는 파일들을 싹 다 복사해줬다.     
 
