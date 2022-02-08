@@ -44,7 +44,7 @@ tag: [jekyll, ruby, tzinfo]
 
 2. Powershell 에서 ```gem install tzifo``` 와 ```gem install tzinfo-data``` 를 실행
 
-   ![캡처](../assets/images/2022-02-08-tzinfoerror/캡처.PNG)
+   ![캡처12 (2)](../assets/images/2022-02-07-tzinfoerror/캡처12 (2).PNG)
 
 ​	
 
