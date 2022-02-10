@@ -1,7 +1,7 @@
 ---
 title : "[Jekyll] tzinfo 에러 해결방법"
 categories : jekyll
-tag: [jekyll, ruby, tzinfo] 
+tag: [jekyll, ruby, tzinfo, mninimal-mistakes] 
 ---
 
 ​	

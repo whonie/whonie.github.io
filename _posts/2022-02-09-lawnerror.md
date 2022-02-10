@@ -1,7 +1,7 @@
 ---
 title : "[Jekyll] github blog 잔디심기 오류"
 categories : jekyll
-tags : [git, github, 잔디심기, jekyll]
+tags : [git, github, 잔디심기, jekyll, minimal-mistakes]
 
 ---
 
