@@ -12,6 +12,8 @@ tags : [jekyll, minimal-mistakes, favicon]
 
 favicon은 그림처럼 탭의 웹사이트 옆에 뜨는 아이콘이다. 사실 favicon이란 용어 자체도 몰라서 구글에 '탭 옆의 아이콘' 이런식으로 검색했었다. 따로 지정하지 않으면 저런 기본 아이콘이 뜨는데, 사실 탭을 여러개 열었을때는 어떤 탭이 내 블로그인지 바로 알기가 어려워서 불편했었다.
 
+만드는 과정에서 다음의 [글들을](https://ohjinjin.github.io/blog/favicon/) [참조했다](https://danggai.github.io/github.io/Github.io-%ED%8C%8C%EB%B9%84%EC%BD%98-%EC%88%98%EC%A0%95%ED%95%98%EA%B8%B0/)
+
 ​	
 
 # 설치과정
