@@ -145,3 +145,114 @@ lines= wholehtml.select('#old_content > table > tbody > tr')
 
 ```python
 ```
+
+# mongo DB
+
+네가지만 기억하자 insert, find, update, delete
+
+## insert
+
+```python
+from pymongo import MongoClient
+client = MongoClient('localhost', 27017) //내 로컬에 있는 mongodb로 접근한다
+db = client.dbsparta //'dbsparta'라는 이름으로 접근한다
+
+doc = {'name':'bobby','age':21} //딕셔너리 만들고
+db.users.insert_one(doc) //'users'라는 컬렉션에 넣는다. 컬렉션은 비슷한애들의 집합
+```
+
+
+
+## find
+
+```python
+from pymongo import MongoClient           # pymongo를 임포트 하기(패키지 인스톨 먼저 해야겠죠?)
+client = MongoClient('localhost', 27017)  # mongoDB는 27017 포트로 돌아갑니다.
+db = client.dbsparta                      # 'dbsparta'라는 이름의 db를 만듭니다.
+
+# MongoDB에서 데이터 모두 보기
+all_users = list(db.users.find({}))
+
+# 참고) MongoDB에서 특정 조건의 데이터 모두 보기. 그냥 find라고 쓰면 출력값이 여러개라서 꼭 list로 묶어줘야함.
+same_ages = list(db.users.find({'age':21},{'_id':False})) // 21살인 애들을 모두 출력
+same_ages는
+[{'name': 'bobby', 'age': 21}
+{'name': 'jane', 'age': 21}[]
+임. 즉, list임. 
+
+print(all_users[0])         # 0번째 결과값을 보기
+print(all_users[0]['name']) # 0번째 결과값의 'name'을 보기
+
+for user in all_users:      # 반복문을 돌며 모든 결과값을 보기
+    print(user)
+ 
+user = db.users.find_one({'name':'bobby'})
+# find_one은 하나만 찾음. 따라서 리스트로 묶어주지 않아도 됨
+# 해당 조건에 해당하는 값이 여러개면 제일 위에있는 일치하는거 하나만 출력됨
+```
+
+
+
+## update
+
+```python
+db.users.update_one({'name':'bobby'},{'$set':{'age':19}})
+```
+
+이다. 이건 코드가 길고 어려워서 거의 다 외워서 쓴다.
+
+
+
+## 자주 사용하는 코드들 요약
+
+```python
+# 저장 - 예시
+doc = {'name':'bobby','age':21}
+db.users.insert_one(doc)
+
+# 한 개 찾기 - 예시
+user = db.users.find_one({'name':'bobby'})
+
+# 여러개 찾기 - 예시 ( _id 값은 제외하고 출력)
+same_ages = list(db.users.find({'age':21},{'_id':False}))
+
+# 바꾸기 - 예시
+db.users.update_one({'name':'bobby'},{'$set':{'age':19}})
+
+# 지우기 - 예시
+db.users.delete_one({'name':'bobby'})
+```
+
+
+
+
+
+
+
+```python
+```
+
+```python
+```
+
+```python
+```
+
+```python
+```
+
+```python
+```
+
+``````python
+```
+
+```python
+```
+
+```python
+
+```
+
+```python
+```
