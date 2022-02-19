@@ -254,7 +254,88 @@ $(document).ready(function () {
 
 이걸로 인해서 `showreview()`가 호출되고 db에 있는 정보를 불러와서 review id에 append된다.
 
-결국 ajax는 js로 서버와 통신하는 방법이고, 이ajax를 쓰는 방법이 여러개가 있는데 그중에서 한게가 jQuerry에 탑재돼있는 기능을 활용하는거다. client에서 보낼때는 data에 딕셔너리 형식으로 넣는다. 그러면 flask로 받을 때 따로 dict(~~)안해도 바로 일단 dict처럼 사용 가능하다.
+---
+
+## callback function()
+
+callback함수 정의: 함수에 파라미터로 들어가는 함수. 용도 :  순차적으로 실행하고 싶을 때 씀. 예컨데
+
+```javascript
+document.querySelector('.button').addEventListener('click',function(){
+    
+})
+```
+
+여기서는 button을 *클릭했을 때* 대괄호 안의 구문이 실행된다. addEventListener는 함수고, *파라미터로 fucntion이* 들어가있다. 
+
+```javascript
+setTimeout(function(){
+    
+}, 1000)
+```
+
+여기서도 보면  setTimeout func의 *파라미터로 function()*이 들어가고, 이 function()의 내용인 대괄호 안의 내용이 *1000ms 뒤에* 실행되는것을 볼 수 있다
+
+유튜브 코딩애플 참조
+
+---
+
+## Ajax
+
+결국 ajax는 js로 서버와 통신하는 방법이고, 이ajax를 쓰는 방법이 여러개가 있는데 그중에서 한게가 jQuerry에 탑재돼있는 기능을 활용하는거다. client에서 보낼때는 data에 딕셔너리 형식으로 넣는다. 그러면 flask로 받을 때 따로 dict(~~)안해도 바로 일단 dict처럼 사용 가능하다. jQuerry에서 ajax로 보낼 때 dict안에 value로서 list를 넣는다거나 그러면 잘 안들어간다. 일단 정확한 원인과 해결방안을 찾기 전까지는 무조건 일반적인 dict형태로 자료를 넘기자.
+
+Ajax의 비동기식/동기식 처리 :
+
+먼저 동기식과 비동기식의 차이를 알아보자. 동기식은 함수를 호출하고, return이 올때까지 기다려준다. 그러니까 함수 실행이 끝나기 전에 다음 구문을 실행하지 않는다. 예컨데
+
+```javascript
+function first() {
+    ...
+    return firstOutput
+}
+
+function second() {
+    ...
+    return secondOutput
+}
+
+let a = first();
+let b = second();
+```
+
+인데 이게 동기식 처리면 first가 다 끝나고 값을 return 받은 다음에 다음 구문으로 넘어가고, 비동기식이면 return이 왔든 안왔든 second()로 바로 넘어간다. 하지만 비동기식 프로그램에선 그래서 값이 왔는지 안왔는지 알 수 있어야 하기때문에 callback함수란게 있다. 
+
+```javascript
+        function appendList() {
+            $.ajax({
+                type: "GET",
+                url: "/order",
+                data: {},
+                async: false,
+                success: function (response) {
+                    let receive = response
+                    for (let i = 0; i < receive.length; i++) {
+                        let name = receive[i]['name']
+                        let howmany = receive[i]['howmany']
+                        let addr = receive[i]['addr']
+                        let phone = receive[i]['phone']
+                        let rank = i+1
+                        tempHtml = `<tr>
+                                        <th scope="row">${rank}</th>
+                                        <td>${name}</td>
+                                        <td>${addr}</td>
+                                        <td>${howmany}</td>
+                                        <td>${phone}</td>
+                                    </tr>`
+                        $('#orderList').append(tempHtml)
+                    }
+                    // console.log(receive)
+                }
+            })
+        }
+```
+
+~~예컨데 여기서 보면 지금은 `async:false`여서 동기식 처리가 되고있다. 만약 비동기식 처리였다면 값이 나온 다음에 `success`콜백함수가 실행됐을것이다. 만약 async:false을 지워서 비동기식처리를 하고 아래에 각주처리된 `console.log`를 정상적으로 실행시킨다면 receive의 값은  undefine이 될것이다. 왜? receive가 들어올때까지 기다리지 않고 바로 console.log() 가 돌아가서 그렇다.~~
 
 
 
