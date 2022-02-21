@@ -1,7 +1,7 @@
 ---
 title : "[스타르타] WEB 1주차: HTML, CSS, JS기초"
-categories : web
-tags : [스파르타코딩클럽, 웹, css, html]
+categories : spartacodingclub
+tags : [스파르타코딩클럽, web, css, html]
 published : false
 ---
 
