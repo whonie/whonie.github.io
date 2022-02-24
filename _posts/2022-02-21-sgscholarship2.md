@@ -261,3 +261,67 @@ print(browser.page_source)
 
 ```
 
+
+
+## 네이버 항공권 스크래핑
+
+강의영상이랑 일단 현재의 웹사이트 구조가 매우 달라서 거의 xpath밖에 못썻는데..
+
+
+
+```python
+browser.maximize_window() # 창 최대화
+```
+
+
+
+이거 중요하다. 뭔가 안된다 싶으면 일단 넣어보자.
+
+```python
+time.sleep(1)
+```
+
+이것도 매우 중요하다. 어떤 elem이 로딩되는데 시간이 쫌 걸리면, 그걸 바로 실행하지 않고 그 elem이 로딩될때까지 기다린다. import 까먹지 말고!!!!
+
+```python
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+
+elem = WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH, ...xpath주소...))
+                                        
+# WebDriverWait : 를 통해서 browser를 최대 10초간 기다려라. 10초가 넘어가면 에러가 나고 끝남
+# until : 단, 10초 안에 뭔가 나오면(뒤의 조건) 충족되면 바로 진행을 함
+# EC : expected conditions의 약어. 즉, 뒤의 조건
+# presence_of_element_located : 뒤의 나오는 요소가 생기면 된다
+# By : XPATH 외에도 ID, CLASS_NAME, LINK_TEXT 등 다양하다                                       
+# 즉, 뒤의 조건이 로딩될때까지 뒤의 browser 명령 실행을 잠시 멈추는것이다
+         
+#실패했을때는 의미가 없기때문에 그래서 보통 try/finally로 많이 묶는다.
+try :
+    elem = WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH, ...xpath주소...))
+finally :
+     browser.quit()                                       
+                       
+```
+
+
+
+
+
+LINK_TEXT는 a테그의 text값에만 쓰인다.
+
+
+
+```python
+elem.text
+
+```
+
+하면 해당 엘리먼트의 텍스트값을 토해낸다
+
+
+
+
+
+```python
+```
