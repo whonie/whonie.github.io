@@ -1,6 +1,7 @@
 ---
-published : false
-title : '[장학금알리미] xpath와 selenium 기초' 
+title : '[장학금알리미] xpath와 selenium 기초'
+categories : 장학금알리미
+tages : [xpath, requests, selenium, 웹스크래핑]
 ---
 
 # xpath
@@ -281,11 +282,18 @@ browser.maximize_window() # 창 최대화
 time.sleep(1)
 ```
 
+예컨데 'cju' 라고 검색창에 입력하고 그 뒤에 하나를 선택하는걸 구현한다고 하면, 당연히 cju를 입력하고 시간이 조금 지나야 그 리스트가 뜰거임. 그럼 그 시간까지를 줘야함
+
+
+
+
+
 이것도 매우 중요하다. 어떤 elem이 로딩되는데 시간이 쫌 걸리면, 그걸 바로 실행하지 않고 그 elem이 로딩될때까지 기다린다. import 까먹지 말고!!!!
 
 ```python
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 elem = WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH, ...xpath주소...))
                                         
@@ -296,15 +304,8 @@ elem = WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH
 # By : XPATH 외에도 ID, CLASS_NAME, LINK_TEXT 등 다양하다                                       
 # 즉, 뒤의 조건이 로딩될때까지 뒤의 browser 명령 실행을 잠시 멈추는것이다
          
-#실패했을때는 의미가 없기때문에 그래서 보통 try/finally로 많이 묶는다.
-try :
-    elem = WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH, ...xpath주소...))
-finally :
-     browser.quit()                                       
                        
 ```
-
-
 
 
 
@@ -314,14 +315,18 @@ LINK_TEXT는 a테그의 text값에만 쓰인다.
 
 ```python
 elem.text
-
 ```
 
 하면 해당 엘리먼트의 텍스트값을 토해낸다
 
 
 
-
+try/finally 는, 일단 무조건 try를 시도해보고, try가 끝나면 finally를 실행한다. 그니까 아래 구문같은 경우에는 성공하면 성공하고 브라우저가 닫힐거고, 실패하면 또 실패하는데로 바로 닫힐거다.
 
 ```python
+try :
+    elem = WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH, ...xpath주소...))
+finally :
+     browser.quit()                                       
+
 ```

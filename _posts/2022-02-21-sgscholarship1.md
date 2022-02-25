@@ -1,7 +1,7 @@
 ---
-categories : 장학금크롤러
-title : '[장학금알리미] 학교 장학금을 놓치지 않게 해주는 서비스를 만들어보자' 
-published : false
+categories : 장학금알리미
+title : '[장학금알리미] 학교 장학금을 놓치지 않게 해주는 서비스를 만들어보자'
+tags : [selenium, 웹스크래핑]
 ---
 
 sparta web과정을 들으면서 내 개인적인 공부에 관한 포스팅을 전혀 쓰지 못했다..
